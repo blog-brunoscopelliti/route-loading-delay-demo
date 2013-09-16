@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>Show route only after all promises are resolved</title>
+  
+  <style>
+
+    #post {
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+    #post ~ p {
+      font-size: 18px;
+      width: 70%;
+    }
+    #post ~ quote {
+      border-left: 1px solid #555;
+      display: block;
+      font-size: 18px;
+      font-style: italic;
+      line-height: 24px;
+      margin-left: 30px;
+      padding: 20px 0 20px 30px;
+      width: 50%;
+    }
+
+
+
+
+    html, body { height: 100%; }
+    .modal {
+      background: #CCC;
+      height: 100%;
+      opacity: .75;
+      position: absolute; top: 0; left: 0;
+      width: 100%;
+      z-index: 999;
+    }
+    #loading {
+      list-style: none;
+      margin: 250px auto;
+      text-align: center;
+      width: 400px;
+    }
+    
+    /* Loading animation inspired by http://codepen.io/joni/details/FiKsd */
+
+    @keyframes loader{
+      50% { height: 6px; margin-top: 74px; opacity: .1; }
+    }
+
+    .bar {
+      height: 80px;
+      width: 6px;
+      border-radius: 3px;
+      background: #333;
+      display :inline-block;
+      margin: 0 2px;      
+      animation: loader 1.3s infinite;
+    }
+
+    .bar:nth-child(1) { animation-delay: .1s; }
+    .bar:nth-child(2) { animation-delay: .2s; }
+    .bar:nth-child(4) { animation-delay: .4s; }
+    .bar:nth-child(5) { animation-delay: .5s; }
+    .bar:nth-child(6) { animation-delay: .6s; }
+    .bar:nth-child(7) { animation-delay: .7s; }
+    .bar:nth-child(8) { animation-delay: .8s; }
+    .bar:nth-child(9) { animation-delay: .9s; }
+    .bar:nth-child(10) { animation-delay: 1s; }
+
+  </style>
+
+</head>
+<body>
+  
+  <ng-view></ng-view>
+
+  <div class="modal" ng-show="loadingView">
+    <ul id="loading">
+      <li class="bar" ng-repeat="i in [0,1,2,3,4,5,6,7,8,9]"></li>
+    </ul>
+  </div>
+
+  <!-- AngularJS -->
+  <script type="text/javascript" src="angular-1.1.5.js"></script> 
+
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/controllers.js"></script>
+  <script type="text/javascript" src="js/services.js"></script>
+
+
+</body>
+</html>

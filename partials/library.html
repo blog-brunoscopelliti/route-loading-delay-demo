@@ -1,0 +1,12 @@
+<h2>Books</h2>
+<ul>
+	<li ng-repeat="b in books">{{b.id}} - {{b.title}} (<span ng-repeat="a in b.authors">{{a}}<span ng-if="!$last">, </span></span>)</li>
+</ul>
+
+<h2>Movies</h2>
+<ul>
+	<li ng-repeat="m in movies">{{m.id}} - {{m.title}} (<span ng-repeat="a in m.authors">{{a}}<span ng-if="!$last">, </span></span>)</li>
+</ul>
+
+<p>Before this template is displayed all the promises have to be resolved...</p>
+<p>Back to the <a href="#/auto">previous view</a>.</p>
